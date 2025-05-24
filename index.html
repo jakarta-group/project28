@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JAKARTA TODAY 2025 - PROJECT 28</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: linear-gradient(to bottom, #1a1a1a, #333);
+      color: #f4f4f4;
+    }
+
+    .top-header {
+      background-color: #0a0a0a;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px;
+      flex-wrap: wrap;
+    }
+
+    .top-header .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #ffcc00;
+      letter-spacing: 1.5px;
+    }
+
+    .search-box {
+      background-color: #111;
+      border: 1px solid #555;
+      padding: 6px 12px;
+      border-radius: 6px;
+      max-width: 320px;
+      flex-grow: 1;
+      margin-left: 20px;
+    }
+
+    .search-box input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #fff;
+      width: 100%;
+      font-size: 15px;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 28px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: white;
+      margin-right: 12px;
+    }
+
+    nav {
+      background-color: #d2691e;
+      padding: 12px 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: bold;
+      font-size: 17px;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ffcc00;
+    }
+
+    .center-image {
+      text-align: center;
+      margin: 30px 0 40px;
+    }
+
+    .center-image img {
+      max-width: 85%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+    }
+
+    .layout {
+      display: flex;
+      max-width: 1200px;
+      margin: 0 auto 60px;
+      padding: 0 20px;
+      gap: 24px;
+      box-sizing: border-box;
+    }
+
+    .sidebar {
+      flex: 0 0 260px;
+      background-color: #2e2e2e;
+      padding: 24px 20px;
+      border-radius: 12px;
+      font-size: 0.9em;
+      height: fit-content;
+    }
+
+    .sidebar .widget h3 {
+      color: #29b6f6;
+      font-size: 1.15em;
+      margin-bottom: 14px;
+    }
+
+    .sidebar .widget ul,
+    .sidebar .widget p {
+      font-size: 1em;
+      line-height: 1.5em;
+      margin: 0 0 14px 18px;
+      padding-left: 0;
+      list-style-position: inside;
+    }
+
+    .container {
+      flex: 1;
+      background-color: #222;
+      padding: 20px 30px;
+      border-radius: 12px;
+    }
+
+    .main-content {
+      box-sizing: border-box;
+    }
+
+    .main-news {
+      background-color: #333;
+      padding: 24px;
+      border-radius: 12px;
+      margin-bottom: 40px;
+      box-shadow: 0 3px 14px rgba(0,0,0,0.45);
+    }
+
+    .main-news h2 {
+      margin-top: 0;
+      color: #f44336;
+      font-size: 2.1em;
+    }
+
+    .main-news p {
+      color: #ddd;
+      font-size: 1.05em;
+      line-height: 1.7em;
+      margin-top: 12px;
+    }
+
+    .main-news img {
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    .news-horizontal {
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      padding-bottom: 16px;
+    }
+
+    .news-horizontal .news-item {
+      flex: 0 0 auto;
+      width: 300px;
+      background-color: #2c2c2c;
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 3px 7px rgba(0,0,0,0.38);
+      transition: transform 0.3s ease;
+    }
+
+    .news-horizontal .news-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .news-horizontal .news-image {
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 14px;
+    }
+
+    footer {
+      background-color: #000;
+      color: white;
+      text-align: center;
+      padding: 24px 0;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+
+    /* --- FLOATING GEAR BUTTON (Mobile only) --- */
+    .sidebar-toggle-float {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      font-size: 28px;
+      background: #444;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      z-index: 999;
+    }
+
+    /* --- MOBILE --- */
+    @media (max-width: 768px) {
+      .top-header {
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 10px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .layout {
+        flex-direction: column;
+        padding: 10px;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      .sidebar {
+        display: none;
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      .sidebar.show {
+        display: block;
+      }
+
+      .sidebar-toggle-float {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-header">
+    <button class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('show')">&#9776;</button>
+    <div class="logo">JAKARTA TODAY</div>
+    <div class="search-box">
+      <input type="text" placeholder="Cari berita...">
+    </div>
+  </div>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Berita</a>
+    <a href="#">Politik</a>
+    <a href="#">Ekonomi</a>
+    <a href="#">Cuaca</a>
+    <a href="#">Olahraga</a>
+  </nav>
+
+  <div class="center-image">
+    <img src="https://jakarta-group.github.io/project28/images/jakarta-today-banner.jpg" alt="Banner Jakarta Today" />
+  </div>
+
+  <div class="layout">
+    <div class="sidebar" id="sidebar">
+      <div class="widget">
+        <h3>Berita Populer</h3>
+        <ul>
+          <li>Harga Emas Dunia Capai Rekor Tertinggi</li>
+          <li>Startup Lokal Raih Pendanaan Seri B</li>
+        </ul>
+      </div>
+      <div class="widget">
+        <h3>Cuaca Hari Ini</h3>
+        <p>Jakarta: 31°C, Cerah Berawan</p>
+        <p>Bandung: 26°C, Hujan Ringan</p>
+        <p>Surabaya: 33°C, Panas</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="main-content">
+        <div class="main-news">
+          <img src="https://jakarta-group.github.io/project28/images/whitehouse.jpg" alt="Gedung Putih" />
+          <h2>Gedung Putih Memecat Puluhan Staf Dewan Keamanan Nasional</h2>
+          <p>Presiden Amerika Serikat, Donald Trump, telah memecat puluhan staf dari Dewan Keamanan Nasional (NSC)...</p>
+        </div>
+
+        <div class="news-horizontal">
+          <div class="news-item">
+            <img src="https://jakarta-group.github.io/project28/images/kyiv.jpeg" alt="Kyiv diserang" class="news-image" />
+            <h2>Kyiv Diserang Besar-besaran oleh Rusia</h2>
+            <p>Rusia melancarkan serangan drone dan rudal ke ibu kota Ukraina, Kyiv.</p>
+          </div>
+          <div class="news-item">
+            <img src="https://jakarta-group.github.io/project28/images/wirtz.jpg" alt="Wirtz ke Liverpool" class="news-image" />
+            <h2>Florian Wirtz Resmi Gabung Liverpool</h2>
+            <p>Florian Wirtz, gelandang muda Jerman, resmi bergabung dengan Liverpool.</p>
+          </div>
+          <div class="news-item">
+            <img src="https://jakarta-group.github.io/project28/images/bmkg.jpg" alt="BMKG" class="news-image" />
+            <h2>BMKG Peringatkan Cuaca Ekstrem</h2>
+            <p>BMKG mengeluarkan peringatan hujan lebat, angin kencang dan petir di Indonesia.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="sidebar-toggle-float" onclick="document.getElementById('sidebar').classList.toggle('show')">&#9881;</button>
+
+  <footer>
+    <p>&copy; 2025 JAKARTA TODAY. All rights reserved.</p>
+  </footer>
+</body>
+</html>
